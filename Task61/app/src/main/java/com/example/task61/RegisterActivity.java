@@ -105,8 +105,14 @@ public class RegisterActivity extends AppCompatActivity {
         User user = new User(UUID.randomUUID().toString(), username, email);
 
         // Save login status and user details
-        sessionManager.setLogin(true);
-        sessionManager.saveUser(user);
+        sessionManager.createLoginSession(user);
+        
+        // Debug: Check if user was saved properly
+        User testUser = sessionManager.getCurrentUser();
+        if (testUser == null) {
+            Toast.makeText(RegisterActivity.this, "Error: Failed to save user session", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         // Show success message and navigate to interests selection
         Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();

@@ -30,6 +30,11 @@ public class DashboardActivity extends AppCompatActivity {
     private ImageView profileImageView;
     private RecyclerView tasksRecyclerView;
     private Button signOutButton;
+    private Button profileButton;
+    private Button historyButton;
+    private Button shareButton;
+    private Button upgradeButton;
+    private Button googlePayTestButton;
 
     private SessionManager sessionManager;
     private TaskAdapter taskAdapter;
@@ -57,12 +62,52 @@ public class DashboardActivity extends AppCompatActivity {
         profileImageView = findViewById(R.id.profileImageView);
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         signOutButton = findViewById(R.id.signOutButton);
+        profileButton = findViewById(R.id.profileButton);
+        historyButton = findViewById(R.id.historyButton);
+        shareButton = findViewById(R.id.shareButton);
+        upgradeButton = findViewById(R.id.upgradeButton);
+        googlePayTestButton = findViewById(R.id.googlePayTestButton);
 
-        // Set up sign out button
+        // Set up button click listeners
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signOut();
+            }
+        });
+        
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, ProfileActivity.class));
+            }
+        });
+        
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, HistoryActivity.class));
+            }
+        });
+        
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, ShareProfileActivity.class));
+            }
+        });
+        
+        upgradeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, UpgradeActivity.class));
+            }
+        });
+        
+        googlePayTestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashboardActivity.this, GooglePayTestActivity.class));
             }
         });
 
@@ -94,7 +139,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void loadUserInfo() {
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
         if (user != null) {
             userNameText.setText(user.getUsername());
             
@@ -110,7 +155,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void generateQuizzes() {
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
         
         // Generate quizzes based on user interests
         if (user != null && user.getInterests() != null && !user.getInterests().isEmpty()) {
@@ -163,7 +208,7 @@ public class DashboardActivity extends AppCompatActivity {
     private void updateTaskCount() {
         // Count incomplete quizzes
         int incompleteTasks = 0;
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
         
         if (user != null && user.getCompletedQuizIds() != null) {
             for (Quiz quiz : quizzes) {

@@ -48,7 +48,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         holder.descriptionTextView.setText(quiz.getDescription());
         
         // Check if user has completed this quiz
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
         final boolean isCompleted;
         
         if (user != null && user.getCompletedQuizIds() != null) {

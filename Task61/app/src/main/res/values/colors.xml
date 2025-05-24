@@ -8,4 +8,19 @@
     <color name="colorResultBackground">#2979FF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    
+    <!-- Payment Method Colors -->
+    <color name="payment_card">#1976D2</color>
+    <color name="payment_paypal">#0070BA</color>
+    <color name="payment_google">#34A853</color>
+    <color name="payment_apple">#000000</color>
+    <color name="payment_bank">#9C27B0</color>
+    
+    <!-- Payment Status Colors -->
+    <color name="payment_processing">#FF9800</color>
+    <color name="payment_success">#4CAF50</color>
+    <color name="payment_failed">#F44336</color>
 </resources>

@@ -72,12 +72,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userNameText" />
 
+    <!-- Navigation Buttons -->
+    <LinearLayout
+        android:id="@+id/navigationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskCountText">
+
+        <!-- First Column: Profile and History -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginEnd="4dp">
+
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorTaskBackground"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/historyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorTaskBackground"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- Second Column: Share and Upgrade -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp">
+
+            <Button
+                android:id="@+id/shareButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Share"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorTaskBackground"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/upgradeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upgrade"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorTaskBackground"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- Third Column: Google Pay Test -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="4dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/googlePayTestButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="GPay Test"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clipToPadding="false"
@@ -85,7 +180,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskCountText"
+        app:layout_constraintTop_toBottomOf="@+id/navigationLayout"
         tools:listitem="@layout/item_task" />
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

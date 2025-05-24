@@ -125,7 +125,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         // Check if user has already completed this quiz
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
         if (user != null && user.getCompletedQuizIds() != null && user.getCompletedQuizIds().contains(quizId)) {
             Toast.makeText(this, "You've already completed this quiz", Toast.LENGTH_SHORT).show();
             finish();
@@ -308,7 +308,7 @@ public class QuizActivity extends AppCompatActivity {
                 submitButton.setText("Complete Quiz");
                 
                 // Mark quiz as completed
-                User user = sessionManager.getUser();
+                User user = sessionManager.getCurrentUser();
                 if (user != null) {
                     if (user.getCompletedQuizIds() == null) {
                         user.setCompletedQuizIds(new ArrayList<>());

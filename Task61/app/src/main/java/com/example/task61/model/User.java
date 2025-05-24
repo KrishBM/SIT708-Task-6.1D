@@ -1,6 +1,7 @@
 package com.example.task61.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -10,11 +11,46 @@ public class User {
     private String profileImageUrl;
     private List<String> interests;
     private List<String> completedQuizIds;
+    private Date registrationDate;
+    private SubscriptionTier subscriptionTier;
+    private int totalQuestions;
+    private int correctAnswers;
+    private int incorrectAnswers;
+    private String shareableProfileId;
+    private boolean isProfilePublic;
+
+    public enum SubscriptionTier {
+        STARTER("Starter", 0),
+        INTERMEDIATE("Intermediate", 4.99),
+        ADVANCED("Advanced", 9.99);
+
+        private final String displayName;
+        private final double price;
+
+        SubscriptionTier(String displayName, double price) {
+            this.displayName = displayName;
+            this.price = price;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+    }
 
     public User() {
         // Required empty constructor for Firebase
         this.interests = new ArrayList<>();
         this.completedQuizIds = new ArrayList<>();
+        this.registrationDate = new Date();
+        this.subscriptionTier = SubscriptionTier.STARTER;
+        this.totalQuestions = 0;
+        this.correctAnswers = 0;
+        this.incorrectAnswers = 0;
+        this.isProfilePublic = false;
     }
 
     public User(String id, String username, String email) {
@@ -23,6 +59,12 @@ public class User {
         this.email = email;
         this.interests = new ArrayList<>();
         this.completedQuizIds = new ArrayList<>();
+        this.registrationDate = new Date();
+        this.subscriptionTier = SubscriptionTier.STARTER;
+        this.totalQuestions = 0;
+        this.correctAnswers = 0;
+        this.incorrectAnswers = 0;
+        this.isProfilePublic = false;
     }
 
     public String getId() {
@@ -90,5 +132,80 @@ public class User {
     
     public boolean hasCompletedQuiz(String quizId) {
         return completedQuizIds != null && completedQuizIds.contains(quizId);
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public SubscriptionTier getSubscriptionTier() {
+        return subscriptionTier;
+    }
+
+    public void setSubscriptionTier(SubscriptionTier subscriptionTier) {
+        this.subscriptionTier = subscriptionTier;
+    }
+
+    public int getTotalQuestions() {
+        return totalQuestions;
+    }
+
+    public void setTotalQuestions(int totalQuestions) {
+        this.totalQuestions = totalQuestions;
+    }
+
+    public int getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+
+    public int getIncorrectAnswers() {
+        return incorrectAnswers;
+    }
+
+    public void setIncorrectAnswers(int incorrectAnswers) {
+        this.incorrectAnswers = incorrectAnswers;
+    }
+
+    public String getShareableProfileId() {
+        return shareableProfileId;
+    }
+
+    public void setShareableProfileId(String shareableProfileId) {
+        this.shareableProfileId = shareableProfileId;
+    }
+
+    public boolean isProfilePublic() {
+        return isProfilePublic;
+    }
+
+    public void setProfilePublic(boolean profilePublic) {
+        isProfilePublic = profilePublic;
+    }
+
+    public void incrementTotalQuestions() {
+        this.totalQuestions++;
+    }
+
+    public void incrementCorrectAnswers() {
+        this.correctAnswers++;
+        incrementTotalQuestions();
+    }
+
+    public void incrementIncorrectAnswers() {
+        this.incorrectAnswers++;
+        incrementTotalQuestions();
+    }
+
+    public double getAccuracyPercentage() {
+        if (totalQuestions == 0) return 0.0;
+        return (double) correctAnswers / totalQuestions * 100;
     }
 } 

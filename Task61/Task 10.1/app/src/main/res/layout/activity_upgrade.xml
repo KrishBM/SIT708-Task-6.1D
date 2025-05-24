@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header with Back Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/primary">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/upgrade"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Current Tier Info -->
+            <TextView
+                android:id="@+id/current_tier_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Plan: Starter"
+                style="@style/SubtitleText"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Starter Plan -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/starter_card"
+                style="@style/SubscriptionCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/starter_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/starter"
+                        style="@style/TitleText" />
+
+                    <TextView
+                        android:id="@+id/starter_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/free"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/starter_color"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:id="@+id/starter_features"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/starter_features"
+                        style="@style/BodyText"
+                        android:layout_marginBottom="16dp" />
+
+                    <Button
+                        android:id="@+id/starter_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/select"
+                        style="@style/SecondaryButton" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Intermediate Plan -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/intermediate_card"
+                style="@style/SubscriptionCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/intermediate_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/intermediate"
+                        style="@style/TitleText" />
+
+                    <TextView
+                        android:id="@+id/intermediate_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$4.99/month"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/intermediate_color"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:id="@+id/intermediate_features"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/intermediate_features"
+                        style="@style/BodyText"
+                        android:layout_marginBottom="16dp" />
+
+                    <Button
+                        android:id="@+id/intermediate_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/purchase"
+                        style="@style/PrimaryButton" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Advanced Plan -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/advanced_card"
+                style="@style/SubscriptionCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/advanced_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/advanced"
+                        style="@style/TitleText" />
+
+                    <TextView
+                        android:id="@+id/advanced_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$9.99/month"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/advanced_color"
+                        android:layout_marginBottom="16dp" />
+
+                    <TextView
+                        android:id="@+id/advanced_features"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/advanced_features"
+                        style="@style/BodyText"
+                        android:layout_marginBottom="16dp" />
+
+                    <Button
+                        android:id="@+id/advanced_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/purchase"
+                        style="@style/PrimaryButton" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView> 

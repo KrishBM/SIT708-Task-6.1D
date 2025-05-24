@@ -100,7 +100,11 @@ public class InterestsActivity extends AppCompatActivity {
 
     private void saveInterestsAndProceed() {
         // Get current user
-        User user = sessionManager.getUser();
+        User user = sessionManager.getCurrentUser();
+        
+        // Debug: Check session state
+        boolean isLoggedIn = sessionManager.isLoggedIn();
+        Toast.makeText(this, "Session logged in: " + isLoggedIn + ", User: " + (user != null ? user.getUsername() : "null"), Toast.LENGTH_LONG).show();
         
         if (user != null) {
             // Set interests

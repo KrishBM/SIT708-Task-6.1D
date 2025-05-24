@@ -82,9 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         // Create a dummy user (in reality this would come from the API/database)
         User user = new User(UUID.randomUUID().toString(), username, username + "@example.com");
 
-        // Save login status and user details
-        sessionManager.setLogin(true);
-        sessionManager.saveUser(user);
+                // Save login status and user details        sessionManager.createLoginSession(user);
 
         // Navigate to dashboard
         Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
